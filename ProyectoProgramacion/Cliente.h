@@ -171,6 +171,5 @@ public: void Consulta() {
 	this->dataGridCli->DataSource = this->data->getData();
 	this->data->cerrarConexion();
 }
-
 };
 }

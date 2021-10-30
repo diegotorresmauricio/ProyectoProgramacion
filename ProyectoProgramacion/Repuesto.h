@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Bdd.h"
 #include "RepuestoAlta.h"
 #include "RepuestoEditar.h"
 #include "RepuestoEliminar.h"
@@ -25,6 +26,7 @@ namespace ProyectoProgramacion {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			this->data1 = gcnew Bdd();
 		}
 
 	protected:
@@ -42,6 +44,9 @@ namespace ProyectoProgramacion {
 	private: System::Windows::Forms::Button^ btnNewRep;
 	private: System::Windows::Forms::Button^ btnEditRep;
 	private: System::Windows::Forms::Button^ btnDelRep;
+	private: System::Windows::Forms::DataGridView^ dataGridRep;
+	private: Bdd^ data1;
+
 	protected:
 
 	private:
@@ -61,6 +66,8 @@ namespace ProyectoProgramacion {
 			this->btnNewRep = (gcnew System::Windows::Forms::Button());
 			this->btnEditRep = (gcnew System::Windows::Forms::Button());
 			this->btnDelRep = (gcnew System::Windows::Forms::Button());
+			this->dataGridRep = (gcnew System::Windows::Forms::DataGridView());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridRep))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -110,11 +117,20 @@ namespace ProyectoProgramacion {
 			this->btnDelRep->UseVisualStyleBackColor = true;
 			this->btnDelRep->Click += gcnew System::EventHandler(this, &Repuesto::btnDelRep_Click);
 			// 
+			// dataGridRep
+			// 
+			this->dataGridRep->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridRep->Location = System::Drawing::Point(16, 132);
+			this->dataGridRep->Name = L"dataGridRep";
+			this->dataGridRep->Size = System::Drawing::Size(523, 216);
+			this->dataGridRep->TabIndex = 5;
+			// 
 			// Repuesto
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(563, 423);
+			this->Controls->Add(this->dataGridRep);
 			this->Controls->Add(this->btnDelRep);
 			this->Controls->Add(this->btnEditRep);
 			this->Controls->Add(this->btnNewRep);
@@ -122,6 +138,8 @@ namespace ProyectoProgramacion {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"Repuesto";
 			this->Text = L"Repuesto";
+			this->Load += gcnew System::EventHandler(this, &Repuesto::Repuesto_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridRep))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -138,6 +156,14 @@ namespace ProyectoProgramacion {
 	private: System::Void btnDelRep_Click(System::Object^ sender, System::EventArgs^ e) {
 		ProyectoProgramacion::RepuestoEliminar^ repuestoEliminar = gcnew ProyectoProgramacion::RepuestoEliminar();
 		repuestoEliminar->Show();
+	}
+	private: System::Void Repuesto_Load(System::Object^ sender, System::EventArgs^ e) {
+	this->Consulta1();
+}
+	public: void Consulta1() {
+		this->data1->abrirConexion();
+		this->dataGridRep->DataSource = this->data1->getDataRep();
+		this->data1->cerrarConexion();
 	}
 };
 }

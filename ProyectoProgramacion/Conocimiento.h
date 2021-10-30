@@ -1,4 +1,5 @@
 #pragma once
+#include "Bdd.h"
 #include "ConocimientoAlta.h"
 #include "ConocimientoEditar.h"
 #include "ConocimientoEliminar.h"
@@ -24,6 +25,7 @@ namespace ProyectoProgramacion {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			this->data3 = gcnew Bdd();
 		}
 
 	protected:
@@ -41,6 +43,9 @@ namespace ProyectoProgramacion {
 	private: System::Windows::Forms::Button^ btnNewKnow;
 	private: System::Windows::Forms::Button^ btnEditKnow;
 	private: System::Windows::Forms::Button^ btnDelKnow;
+	private: System::Windows::Forms::DataGridView^ dataGridKnow;
+	private: Bdd^ data3;
+
 	protected:
 
 	private:
@@ -60,6 +65,8 @@ namespace ProyectoProgramacion {
 			this->btnNewKnow = (gcnew System::Windows::Forms::Button());
 			this->btnEditKnow = (gcnew System::Windows::Forms::Button());
 			this->btnDelKnow = (gcnew System::Windows::Forms::Button());
+			this->dataGridKnow = (gcnew System::Windows::Forms::DataGridView());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridKnow))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -109,11 +116,20 @@ namespace ProyectoProgramacion {
 			this->btnDelKnow->UseVisualStyleBackColor = true;
 			this->btnDelKnow->Click += gcnew System::EventHandler(this, &Conocimiento::btnDelKnow_Click);
 			// 
+			// dataGridKnow
+			// 
+			this->dataGridKnow->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridKnow->Location = System::Drawing::Point(16, 133);
+			this->dataGridKnow->Name = L"dataGridKnow";
+			this->dataGridKnow->Size = System::Drawing::Size(523, 216);
+			this->dataGridKnow->TabIndex = 5;
+			// 
 			// Conocimiento
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(563, 423);
+			this->Controls->Add(this->dataGridKnow);
 			this->Controls->Add(this->btnDelKnow);
 			this->Controls->Add(this->btnEditKnow);
 			this->Controls->Add(this->btnNewKnow);
@@ -121,6 +137,8 @@ namespace ProyectoProgramacion {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"Conocimiento";
 			this->Text = L"Conocimiento";
+			this->Load += gcnew System::EventHandler(this, &Conocimiento::Conocimiento_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridKnow))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -139,6 +157,14 @@ namespace ProyectoProgramacion {
 	private: System::Void btnDelKnow_Click(System::Object^ sender, System::EventArgs^ e) {
 		ProyectoProgramacion::ConocimientoEliminar^ conocimientoEliminar = gcnew ProyectoProgramacion::ConocimientoEliminar();
 		conocimientoEliminar->Show();
+	}
+	private: System::Void Conocimiento_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->Consulta3();
+	}
+	public: void Consulta3() {
+		this->data3->abrirConexion();
+		this->dataGridKnow->DataSource = this->data3->getDataKnow();
+		this->data3->cerrarConexion();
 	}
 };
 }

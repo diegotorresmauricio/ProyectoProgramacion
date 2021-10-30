@@ -13,6 +13,9 @@ private:
 public:
 	Bdd();
 	DataTable^ getData();
+	DataTable^ getDataRep();
+	DataTable^ getDataPres();
+	DataTable^ getDataKnow();
 	void abrirConexion();
 	void cerrarConexion();
 };

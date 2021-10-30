@@ -87,6 +87,7 @@ namespace ProyectoProgramacion {
 			// 
 			// panelIzquierdo
 			// 
+			this->panelIzquierdo->BackColor = System::Drawing::Color::MidnightBlue;
 			this->panelIzquierdo->Controls->Add(this->buttonSalir);
 			this->panelIzquierdo->Controls->Add(this->buttonConocimiento);
 			this->panelIzquierdo->Controls->Add(this->buttonPresupuesto);
@@ -103,102 +104,131 @@ namespace ProyectoProgramacion {
 			// 
 			// buttonSalir
 			// 
-			this->buttonSalir->BackColor = System::Drawing::Color::Navy;
+			this->buttonSalir->BackColor = System::Drawing::Color::MidnightBlue;
+			this->buttonSalir->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->buttonSalir->FlatAppearance->BorderColor = System::Drawing::Color::MidnightBlue;
+			this->buttonSalir->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->buttonSalir->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonSalir->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->buttonSalir->Location = System::Drawing::Point(31, 379);
+			this->buttonSalir->ForeColor = System::Drawing::Color::Lavender;
+			this->buttonSalir->Location = System::Drawing::Point(57, 379);
 			this->buttonSalir->Name = L"buttonSalir";
 			this->buttonSalir->Size = System::Drawing::Size(137, 32);
 			this->buttonSalir->TabIndex = 6;
 			this->buttonSalir->Text = L"Salir";
+			this->buttonSalir->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->buttonSalir->UseVisualStyleBackColor = false;
 			this->buttonSalir->Click += gcnew System::EventHandler(this, &MyForm::buttonSalir_Click);
 			// 
 			// buttonConocimiento
 			// 
-			this->buttonConocimiento->BackColor = System::Drawing::Color::Navy;
+			this->buttonConocimiento->BackColor = System::Drawing::Color::MidnightBlue;
+			this->buttonConocimiento->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->buttonConocimiento->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->buttonConocimiento->FlatAppearance->BorderColor = System::Drawing::Color::MidnightBlue;
+			this->buttonConocimiento->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->buttonConocimiento->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonConocimiento->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->buttonConocimiento->Location = System::Drawing::Point(18, 257);
+			this->buttonConocimiento->ForeColor = System::Drawing::Color::Lavender;
+			this->buttonConocimiento->Location = System::Drawing::Point(44, 277);
 			this->buttonConocimiento->Name = L"buttonConocimiento";
+			this->buttonConocimiento->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->buttonConocimiento->Size = System::Drawing::Size(150, 32);
 			this->buttonConocimiento->TabIndex = 5;
 			this->buttonConocimiento->Text = L"Conocimiento";
+			this->buttonConocimiento->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->buttonConocimiento->UseVisualStyleBackColor = false;
 			this->buttonConocimiento->Click += gcnew System::EventHandler(this, &MyForm::buttonConocimiento_Click);
 			// 
 			// buttonPresupuesto
 			// 
-			this->buttonPresupuesto->BackColor = System::Drawing::Color::Navy;
+			this->buttonPresupuesto->BackColor = System::Drawing::Color::MidnightBlue;
+			this->buttonPresupuesto->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->buttonPresupuesto->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->buttonPresupuesto->FlatAppearance->BorderColor = System::Drawing::Color::MidnightBlue;
+			this->buttonPresupuesto->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->buttonPresupuesto->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonPresupuesto->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->buttonPresupuesto->Location = System::Drawing::Point(18, 208);
+			this->buttonPresupuesto->ForeColor = System::Drawing::Color::Lavender;
+			this->buttonPresupuesto->Location = System::Drawing::Point(44, 228);
 			this->buttonPresupuesto->Name = L"buttonPresupuesto";
+			this->buttonPresupuesto->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->buttonPresupuesto->Size = System::Drawing::Size(150, 32);
 			this->buttonPresupuesto->TabIndex = 4;
 			this->buttonPresupuesto->Text = L"Presupuestos";
+			this->buttonPresupuesto->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->buttonPresupuesto->UseVisualStyleBackColor = false;
 			this->buttonPresupuesto->Click += gcnew System::EventHandler(this, &MyForm::buttonPresupuesto_Click);
 			// 
 			// buttonRepuesto
 			// 
-			this->buttonRepuesto->BackColor = System::Drawing::Color::Navy;
+			this->buttonRepuesto->BackColor = System::Drawing::Color::MidnightBlue;
+			this->buttonRepuesto->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->buttonRepuesto->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->buttonRepuesto->FlatAppearance->BorderColor = System::Drawing::Color::MidnightBlue;
+			this->buttonRepuesto->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->buttonRepuesto->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonRepuesto->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->buttonRepuesto->Location = System::Drawing::Point(18, 161);
+			this->buttonRepuesto->ForeColor = System::Drawing::Color::Lavender;
+			this->buttonRepuesto->Location = System::Drawing::Point(44, 181);
 			this->buttonRepuesto->Name = L"buttonRepuesto";
+			this->buttonRepuesto->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->buttonRepuesto->Size = System::Drawing::Size(150, 32);
 			this->buttonRepuesto->TabIndex = 3;
 			this->buttonRepuesto->Text = L"Repuestos";
+			this->buttonRepuesto->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->buttonRepuesto->UseVisualStyleBackColor = false;
 			this->buttonRepuesto->Click += gcnew System::EventHandler(this, &MyForm::buttonRepuesto_Click);
 			// 
 			// buttonCliente
 			// 
-			this->buttonCliente->BackColor = System::Drawing::Color::Navy;
+			this->buttonCliente->BackColor = System::Drawing::Color::MidnightBlue;
+			this->buttonCliente->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->buttonCliente->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->buttonCliente->FlatAppearance->BorderColor = System::Drawing::Color::MidnightBlue;
+			this->buttonCliente->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->buttonCliente->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonCliente->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->buttonCliente->Location = System::Drawing::Point(18, 114);
+			this->buttonCliente->ForeColor = System::Drawing::Color::Lavender;
+			this->buttonCliente->Location = System::Drawing::Point(44, 134);
 			this->buttonCliente->Name = L"buttonCliente";
+			this->buttonCliente->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->buttonCliente->Size = System::Drawing::Size(150, 32);
 			this->buttonCliente->TabIndex = 2;
 			this->buttonCliente->Text = L"Clientes";
+			this->buttonCliente->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->buttonCliente->UseVisualStyleBackColor = false;
 			this->buttonCliente->Click += gcnew System::EventHandler(this, &MyForm::buttonCliente_Click);
 			// 
 			// buttonInicio
 			// 
-			this->buttonInicio->BackColor = System::Drawing::Color::Navy;
+			this->buttonInicio->BackColor = System::Drawing::Color::MidnightBlue;
+			this->buttonInicio->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->buttonInicio->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->buttonInicio->FlatAppearance->BorderColor = System::Drawing::Color::MidnightBlue;
+			this->buttonInicio->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->buttonInicio->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonInicio->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->buttonInicio->Location = System::Drawing::Point(18, 67);
+			this->buttonInicio->ForeColor = System::Drawing::Color::Lavender;
+			this->buttonInicio->Location = System::Drawing::Point(44, 87);
 			this->buttonInicio->Name = L"buttonInicio";
-			this->buttonInicio->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->buttonInicio->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->buttonInicio->Size = System::Drawing::Size(150, 32);
 			this->buttonInicio->TabIndex = 1;
 			this->buttonInicio->Text = L"Inicio";
+			this->buttonInicio->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->buttonInicio->UseVisualStyleBackColor = false;
 			this->buttonInicio->Click += gcnew System::EventHandler(this, &MyForm::buttonInicio_Click);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 15.75F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(13, 13);
+			this->label1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 15.75F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->label1->Location = System::Drawing::Point(55, 9);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(142, 25);
+			this->label1->Size = System::Drawing::Size(139, 24);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Taller V1.0b1";
 			// 

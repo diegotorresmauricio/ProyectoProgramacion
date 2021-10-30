@@ -267,6 +267,8 @@ Class ProyectoProgramacion.ConocimientoEliminar: AutoLayout, AnsiClass, Class, P
 Class ProyectoProgramacion.Conocimiento: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Consulta3(): PrivateScope, Public, HideBySig
 Class ProyectoProgramacion.MyForm1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -282,6 +284,8 @@ Class ProyectoProgramacion.PresupuestoEliminar: AutoLayout, AnsiClass, Class, Pu
 Class ProyectoProgramacion.Presupuesto: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Consulta(): PrivateScope, Public, HideBySig
 Class ProyectoProgramacion.RepuestoAlta: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -294,6 +298,8 @@ Class ProyectoProgramacion.RepuestoEliminar: AutoLayout, AnsiClass, Class, Publi
 Class ProyectoProgramacion.Repuesto: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Consulta1(): PrivateScope, Public, HideBySig
 Class ProyectoProgramacion.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

@@ -1,4 +1,5 @@
 #pragma once
+#include "Bdd.h"
 
 #include "PresupuestoAlta.h"
 #include "PresupuestoEditar.h"
@@ -25,6 +26,7 @@ namespace ProyectoProgramacion {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			this->data2 = gcnew Bdd();
 		}
 
 	protected:
@@ -42,6 +44,10 @@ namespace ProyectoProgramacion {
 	private: System::Windows::Forms::Button^ btnNewPres;
 	private: System::Windows::Forms::Button^ btnEditPres;
 	private: System::Windows::Forms::Button^ btnDelPres;
+	private: System::Windows::Forms::DataGridView^ dataGridPres;
+
+	private: Bdd^ data2;
+
 	protected:
 
 	private:
@@ -61,6 +67,8 @@ namespace ProyectoProgramacion {
 			this->btnNewPres = (gcnew System::Windows::Forms::Button());
 			this->btnEditPres = (gcnew System::Windows::Forms::Button());
 			this->btnDelPres = (gcnew System::Windows::Forms::Button());
+			this->dataGridPres = (gcnew System::Windows::Forms::DataGridView());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridPres))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -110,11 +118,20 @@ namespace ProyectoProgramacion {
 			this->btnDelPres->UseVisualStyleBackColor = true;
 			this->btnDelPres->Click += gcnew System::EventHandler(this, &Presupuesto::btnDelPres_Click);
 			// 
+			// dataGridPres
+			// 
+			this->dataGridPres->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridPres->Location = System::Drawing::Point(15, 129);
+			this->dataGridPres->Name = L"dataGridPres";
+			this->dataGridPres->Size = System::Drawing::Size(523, 216);
+			this->dataGridPres->TabIndex = 5;
+			// 
 			// Presupuesto
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(563, 423);
+			this->Controls->Add(this->dataGridPres);
 			this->Controls->Add(this->btnDelPres);
 			this->Controls->Add(this->btnEditPres);
 			this->Controls->Add(this->btnNewPres);
@@ -122,6 +139,8 @@ namespace ProyectoProgramacion {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"Presupuesto";
 			this->Text = L"Presupuesto";
+			this->Load += gcnew System::EventHandler(this, &Presupuesto::Presupuesto_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridPres))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -141,5 +160,13 @@ namespace ProyectoProgramacion {
 		ProyectoProgramacion::PresupuestoEliminar^ presupuestoEliminar = gcnew ProyectoProgramacion::PresupuestoEliminar();
 		presupuestoEliminar->Show();
 	}
+	private: System::Void Presupuesto_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->Consulta();
+}
+	 public: void Consulta() {
+		 this->data2->abrirConexion();
+		 this->dataGridPres->DataSource = this->data2->getDataPres();
+		 this->data2->cerrarConexion();
+	   }
 };
 }

@@ -53,6 +53,9 @@ namespace ProyectoProgramacion {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::TextBox^ txtIDNewRep;
 
 	protected:
 
@@ -80,6 +83,9 @@ namespace ProyectoProgramacion {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->txtIDNewRep = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridRep))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -195,11 +201,43 @@ namespace ProyectoProgramacion {
 			this->label4->TabIndex = 11;
 			this->label4->Text = L"Valor";
 			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(12, 381);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(105, 21);
+			this->label9->TabIndex = 26;
+			this->label9->Text = L"ID Repuesto";
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->Location = System::Drawing::Point(239, 381);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(312, 21);
+			this->label8->TabIndex = 25;
+			this->label8->Text = L"Utilizar solo en caso de editar o eliminar";
+			// 
+			// txtIDNewRep
+			// 
+			this->txtIDNewRep->Location = System::Drawing::Point(176, 381);
+			this->txtIDNewRep->Name = L"txtIDNewRep";
+			this->txtIDNewRep->Size = System::Drawing::Size(43, 20);
+			this->txtIDNewRep->TabIndex = 24;
+			// 
 			// Repuesto
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(563, 423);
+			this->Controls->Add(this->label9);
+			this->Controls->Add(this->label8);
+			this->Controls->Add(this->txtIDNewRep);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
@@ -226,13 +264,36 @@ namespace ProyectoProgramacion {
 		this->data1->insertarRepuesto(this->txtNewRepMarca->Text, this->txtNewRepTipo->Text, this->txtNewRepValor->Text);
 		this->data1->cerrarConexion();
 
+		this->txtNewRepMarca->Clear();
+		this->txtNewRepTipo->Clear();
+		this->txtNewRepValor->Clear();
+		this->txtIDNewRep->Clear();
+
 		this->Consulta1();
 	}
 	private: System::Void btnEditRep_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+		this->data1->abrirConexion();
+		this->data1->editarRepuesto(this->txtNewRepMarca->Text, this->txtNewRepTipo->Text, this->txtNewRepValor->Text, this->txtIDNewRep->Text);
+		this->data1->cerrarConexion();
+
+		this->txtNewRepMarca->Clear();
+		this->txtNewRepTipo->Clear();
+		this->txtNewRepValor->Clear();
+		this->txtIDNewRep->Clear();
+
+		this->Consulta1();
 	}
 	private: System::Void btnDelRep_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+		this->data1->abrirConexion();
+		this->data1->eliminarRepuesto(this->txtNewRepMarca->Text, this->txtNewRepTipo->Text, this->txtNewRepValor->Text, this->txtIDNewRep->Text);
+		this->data1->cerrarConexion();
+
+		this->txtNewRepMarca->Clear();
+		this->txtNewRepTipo->Clear();
+		this->txtNewRepValor->Clear();
+		this->txtIDNewRep->Clear();
+
+		this->Consulta1();
 	}
 	private: System::Void Repuesto_Load(System::Object^ sender, System::EventArgs^ e) {
 	this->Consulta1();

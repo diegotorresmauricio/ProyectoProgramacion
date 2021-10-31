@@ -48,6 +48,10 @@ namespace ProyectoProgramacion {
 
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::TextBox^ txtIDNewKnow;
+
 
 	protected:
 
@@ -73,6 +77,9 @@ namespace ProyectoProgramacion {
 			this->txtDescKnow = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->txtIDNewKnow = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridKnow))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -170,11 +177,43 @@ namespace ProyectoProgramacion {
 			this->label3->TabIndex = 9;
 			this->label3->Text = L"Descripcion";
 			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(12, 384);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(142, 21);
+			this->label9->TabIndex = 23;
+			this->label9->Text = L"ID Conocimiento";
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->Location = System::Drawing::Point(239, 384);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(312, 21);
+			this->label8->TabIndex = 22;
+			this->label8->Text = L"Utilizar solo en caso de editar o eliminar";
+			// 
+			// txtIDNewKnow
+			// 
+			this->txtIDNewKnow->Location = System::Drawing::Point(176, 384);
+			this->txtIDNewKnow->Name = L"txtIDNewKnow";
+			this->txtIDNewKnow->Size = System::Drawing::Size(43, 20);
+			this->txtIDNewKnow->TabIndex = 21;
+			// 
 			// Conocimiento
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(563, 423);
+			this->Controls->Add(this->label9);
+			this->Controls->Add(this->label8);
+			this->Controls->Add(this->txtIDNewKnow);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->txtDescKnow);
@@ -199,16 +238,36 @@ namespace ProyectoProgramacion {
 		this->data3->insertarConocimiento(this->txtLinkKnow->Text, this->txtDescKnow->Text);
 		this->data3->cerrarConexion();
 
+		this->txtLinkKnow->Clear();
+		this->txtDescKnow->Clear();
+
 		this->Consulta3();
 	}
 
 	private: System::Void btnEditKnow_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+		this->data3->abrirConexion();
+		this->data3->editarConocimiento(this->txtLinkKnow->Text, this->txtDescKnow->Text, this->txtIDNewKnow->Text);
+		this->data3->cerrarConexion();
+
+		this->txtLinkKnow->Clear();
+		this->txtDescKnow->Clear();
+		this->txtIDNewKnow->Clear();
+
+		this->Consulta3();
 	}
 
 	private: System::Void btnDelKnow_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+		this->data3->abrirConexion();
+		this->data3->eliminarConocimiento(this->txtLinkKnow->Text, this->txtDescKnow->Text, this->txtIDNewKnow->Text);
+		this->data3->cerrarConexion();
+
+		this->txtLinkKnow->Clear();
+		this->txtDescKnow->Clear();
+		this->txtIDNewKnow->Clear();
+
+		this->Consulta3();
 	}
+
 	private: System::Void Conocimiento_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->Consulta3();
 	}

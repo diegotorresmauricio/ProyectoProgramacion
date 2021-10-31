@@ -58,6 +58,7 @@ namespace ProyectoProgramacion {
 	private: System::Windows::Forms::Button^ buttonInicio;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Panel^ panelGeneral;
+	private: System::Windows::Forms::Label^ label2;
 
 
 	private:
@@ -82,7 +83,9 @@ namespace ProyectoProgramacion {
 			this->buttonInicio = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panelGeneral = (gcnew System::Windows::Forms::Panel());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->panelIzquierdo->SuspendLayout();
+			this->panelGeneral->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panelIzquierdo
@@ -234,11 +237,23 @@ namespace ProyectoProgramacion {
 			// 
 			// panelGeneral
 			// 
+			this->panelGeneral->Controls->Add(this->label2);
 			this->panelGeneral->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panelGeneral->Location = System::Drawing::Point(200, 0);
 			this->panelGeneral->Name = L"panelGeneral";
 			this->panelGeneral->Size = System::Drawing::Size(563, 423);
 			this->panelGeneral->TabIndex = 1;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(157, 196);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(246, 21);
+			this->label2->TabIndex = 1;
+			this->label2->Text = L"Bienvenidos a gestión de taller";
 			// 
 			// MyForm
 			// 
@@ -252,6 +267,8 @@ namespace ProyectoProgramacion {
 			this->Text = L"MyForm";
 			this->panelIzquierdo->ResumeLayout(false);
 			this->panelIzquierdo->PerformLayout();
+			this->panelGeneral->ResumeLayout(false);
+			this->panelGeneral->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -259,7 +276,7 @@ namespace ProyectoProgramacion {
 		template<class T>
 		void AbrirPanel(T Formhijo) {
 			if (this->panelGeneral->Controls->Count > 0)
-				this->panelGeneral->Controls->RemoveAt(0);
+				this->panelGeneral->Controls->Clear();
 			Formhijo->TopLevel = false;
 			Formhijo->Dock = DockStyle::Fill;
 			this->panelGeneral->Controls->Add(Formhijo);

@@ -56,6 +56,9 @@ namespace ProyectoProgramacion {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::TextBox^ txtIDNewPres;
 
 	protected:
 
@@ -85,6 +88,9 @@ namespace ProyectoProgramacion {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->txtIDNewPres = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridPres))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -218,11 +224,43 @@ namespace ProyectoProgramacion {
 			this->label6->TabIndex = 37;
 			this->label6->Text = L"Total";
 			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(12, 383);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(125, 21);
+			this->label9->TabIndex = 40;
+			this->label9->Text = L"ID Presupuesto";
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->Location = System::Drawing::Point(239, 383);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(312, 21);
+			this->label8->TabIndex = 39;
+			this->label8->Text = L"Utilizar solo en caso de editar o eliminar";
+			// 
+			// txtIDNewPres
+			// 
+			this->txtIDNewPres->Location = System::Drawing::Point(176, 383);
+			this->txtIDNewPres->Name = L"txtIDNewPres";
+			this->txtIDNewPres->Size = System::Drawing::Size(43, 20);
+			this->txtIDNewPres->TabIndex = 38;
+			// 
 			// Presupuesto
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(563, 423);
+			this->Controls->Add(this->label9);
+			this->Controls->Add(this->label8);
+			this->Controls->Add(this->txtIDNewPres);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
@@ -251,15 +289,40 @@ namespace ProyectoProgramacion {
 		this->data2->insertarPresupuesto(this->txtCliNewPres->Text, this->txtValRepNewPres->Text, this->txtMdoNewPres->Text, this->txtTotalNewPres->Text);
 		this->data2->cerrarConexion();
 
+		this->txtCliNewPres->Clear();
+		this->txtValRepNewPres->Clear();
+		this->txtMdoNewPres->Clear();
+		this->txtTotalNewPres->Clear();
+
 		this->Consulta();
 	}
 
 	private: System::Void btnEditPres_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+		this->data2->abrirConexion();
+		this->data2->editarPresupuesto(this->txtCliNewPres->Text, this->txtValRepNewPres->Text, this->txtMdoNewPres->Text, this->txtTotalNewPres->Text, this->txtIDNewPres->Text);
+		this->data2->cerrarConexion();
+
+		this->txtCliNewPres->Clear();
+		this->txtValRepNewPres->Clear();
+		this->txtMdoNewPres->Clear();
+		this->txtTotalNewPres->Clear();
+		this->txtIDNewPres->Clear();
+
+		this->Consulta();
 	}
 
 	private: System::Void btnDelPres_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->data2->abrirConexion();
+		this->data2->eliminarPresupuesto(this->txtCliNewPres->Text, this->txtValRepNewPres->Text, this->txtMdoNewPres->Text, this->txtTotalNewPres->Text, this->txtIDNewPres->Text);
+		this->data2->cerrarConexion();
 		
+		this->txtCliNewPres->Clear();
+		this->txtValRepNewPres->Clear();
+		this->txtMdoNewPres->Clear();
+		this->txtTotalNewPres->Clear();
+		this->txtIDNewPres->Clear();
+		
+		this->Consulta();
 	}
 	private: System::Void Presupuesto_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->Consulta();

@@ -65,6 +65,9 @@ namespace ProyectoProgramacion {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::TextBox^ txtIDNewCli;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Label^ label9;
 
 	protected:
 
@@ -98,6 +101,9 @@ namespace ProyectoProgramacion {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->txtIDNewCli = (gcnew System::Windows::Forms::TextBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridCli))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -160,6 +166,7 @@ namespace ProyectoProgramacion {
 			this->btnCliEdit->TabIndex = 5;
 			this->btnCliEdit->Text = L"Editar";
 			this->btnCliEdit->UseVisualStyleBackColor = false;
+			this->btnCliEdit->Click += gcnew System::EventHandler(this, &Cliente::btnCliEdit_Click);
 			// 
 			// txtCliNewName
 			// 
@@ -269,11 +276,43 @@ namespace ProyectoProgramacion {
 			this->label7->TabIndex = 17;
 			this->label7->Text = L"Telefono";
 			// 
+			// txtIDNewCli
+			// 
+			this->txtIDNewCli->Location = System::Drawing::Point(181, 379);
+			this->txtIDNewCli->Name = L"txtIDNewCli";
+			this->txtIDNewCli->Size = System::Drawing::Size(43, 20);
+			this->txtIDNewCli->TabIndex = 18;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->Location = System::Drawing::Point(230, 379);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(312, 21);
+			this->label8->TabIndex = 19;
+			this->label8->Text = L"Utilizar solo en caso de editar o eliminar";
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(16, 379);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(87, 21);
+			this->label9->TabIndex = 20;
+			this->label9->Text = L"ID Cliente";
+			// 
 			// Cliente
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(563, 423);
+			this->Controls->Add(this->label9);
+			this->Controls->Add(this->label8);
+			this->Controls->Add(this->txtIDNewCli);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
@@ -307,13 +346,33 @@ private: System::Void btnNewCli_Click(System::Object^ sender, System::EventArgs^
 	this->data->abrirConexion();
 	this->data->insertarCliente(this->txtCliNewName->Text, this->txtCliNewSecond->Text, this->txtCliNewMail->Text, this->txtCliNewDni->Text, this->txtCliNewAdress->Text, this->txtCliNewTel->Text);
 	this->data->cerrarConexion();
-
+	
+	this->txtCliNewName->Clear();
+	this->txtCliNewSecond->Clear();
+	this->txtCliNewMail->Clear();
+	this->txtCliNewDni->Clear();
+	this->txtCliNewAdress->Clear();
+	this->txtCliNewTel->Clear();
+	
 	this->Consulta();
 }
 
 private: System::Void btnDelCli_Click(System::Object^ sender, System::EventArgs^ e) {
-	
+	this->data->abrirConexion();
+	this->data->eliminarCliente(this->txtCliNewName->Text, this->txtCliNewSecond->Text, this->txtCliNewMail->Text, this->txtCliNewDni->Text, this->txtCliNewAdress->Text, this->txtCliNewTel->Text, this->txtIDNewCli->Text);
+	this->data->cerrarConexion();
+
+	this->txtCliNewName->Clear();
+	this->txtCliNewSecond->Clear();
+	this->txtCliNewMail->Clear();
+	this->txtCliNewDni->Clear();
+	this->txtCliNewAdress->Clear();
+	this->txtCliNewTel->Clear();
+	this->txtIDNewCli->Clear();
+
+	this->Consulta();
 }
+
 private: System::Void Cliente_Load(System::Object^ sender, System::EventArgs^ e) {
 	this->Consulta();
 }
@@ -323,16 +382,21 @@ public: void Consulta() {
 	this->dataGridCli->DataSource = this->data->getData();
 	this->data->cerrarConexion();
 }
-/*
-private: System::Void dataGridCli_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
-	String^ nombre = Convert::ToString(dataGridCli->SelectedRows[0]->Cells[1]->Value);
-	String^ apellido = Convert::ToString(dataGridCli->SelectedRows[0]->Cells[2]->Value);
-	String^ mail = Convert::ToString(dataGridCli->SelectedRows[0]->Cells[3]->Value);
-	String^ dni = Convert::ToString(dataGridCli->SelectedRows[0]->Cells[4]->Value);
-	String^ direccion = Convert::ToString(dataGridCli->SelectedRows[0]->Cells[5]->Value);
-	String^ telefono = Convert::ToString(dataGridCli->SelectedRows[0]->Cells[6]->Value);
-	ProyectoProgramacion::ClienteEditar^ clienteEditar = gcnew ProyectoProgramacion::ClienteEditar();	
+
+private: System::Void btnCliEdit_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->data->abrirConexion();
+	this->data->editarCliente(this->txtCliNewName->Text, this->txtCliNewSecond->Text, this->txtCliNewMail->Text, this->txtCliNewDni->Text, this->txtCliNewAdress->Text, this->txtCliNewTel->Text, this->txtIDNewCli->Text);
+	this->data->cerrarConexion();
+	
+	this->txtCliNewName->Clear();
+	this->txtCliNewSecond->Clear();
+	this->txtCliNewMail->Clear();
+	this->txtCliNewDni->Clear();
+	this->txtCliNewAdress->Clear();
+	this->txtCliNewTel->Clear();
+	this->txtIDNewCli->Clear();
+
+	this->Consulta();
 }
-*/
 };
 }

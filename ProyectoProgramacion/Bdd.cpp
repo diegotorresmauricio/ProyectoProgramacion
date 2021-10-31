@@ -38,7 +38,7 @@ void Bdd::insertarCliente(String^ nom, String^ ap, String^ mail, String^ dni, St
 	}
 }
 
-void Bdd::editarCliente(String^ nom, String^ ap, String^ mail, String^ dni, String^ dir, String^ tel) {
+void Bdd::editarCliente(String^ nom, String^ ap, String^ mail, String^ dni, String^ dir, String^ tel, String^ id) {
 	String^ sql = "update cliente set Nombre = '" + nom + "', Apellido = '" + ap + "', Mail = '" + mail + "', DNI = '" + dni + "', Direccion = '" + dir + "', Telefono = '" + tel + "'";
 	MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
 	try{
@@ -56,8 +56,8 @@ void Bdd::editarCliente(String^ nom, String^ ap, String^ mail, String^ dni, Stri
 	}
 }
 
-void Bdd::eliminarCliente(String^ nom, String^ ap, String^ mail, String^ dni, String^ dir, String^ tel) {
-	String^ sql = "delete from cliente where IDCliente = ";
+void Bdd::eliminarCliente(String^ nom, String^ ap, String^ mail, String^ dni, String^ dir, String^ tel, String^ id) {
+	String^ sql = "delete from cliente where IDCliente = '"+id+"'";
 	MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
 	try {
 		using namespace System::Windows::Forms;
@@ -98,8 +98,8 @@ void Bdd::insertarRepuesto(String^ marca, String^ tipo, String^ valor){
 	}
 }
 
-void Bdd::editarRepuesto(String^ marca, String^ tipo, String^ valor) {
-	String^ sql = "update repuesto set Marca = '" + marca + "', Tipo = '" + tipo + "', Valor = " + valor + "";
+void Bdd::editarRepuesto(String^ marca, String^ tipo, String^ valor, String^ idRep) {
+	String^ sql = "update repuesto set IDRepuesto = "+idRep+", Marca = '" + marca + "', Tipo = '" + tipo + "', Valor = " + valor + "";
 	MySqlCommand^ cursor1 = gcnew MySqlCommand(sql, this->conn);
 	try {
 		using namespace System::Windows::Forms;
@@ -115,6 +115,25 @@ void Bdd::editarRepuesto(String^ marca, String^ tipo, String^ valor) {
 		MessageBox::Show(e->Message);
 	}
 }
+
+void Bdd::eliminarRepuesto(String^ marca, String^ tipo, String^ valor, String^ idRep) {
+	String^sql = "delete from repuesto where IDRepuesto = " + idRep + "";
+	MySqlCommand^ cursor1 = gcnew MySqlCommand(sql, this->conn);
+	try {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show("Eliminado Correctamente");
+		cursor1->ExecuteNonQuery();
+	}
+	catch (Exception^ e) {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
+}
+
 
 
 											//datos presupuesto
@@ -142,8 +161,8 @@ void Bdd::insertarPresupuesto(String^ idCli, String^ valor, String^ mdo, String^
 	}
 }
 
-void Bdd::editarPresupuesto(String^ idCli, String^ valor, String^ mdo, String^ total) {
-	String^ sql = "update presupuesto set IDCliente = '"+idCli+"', Valor = '"+valor+"', ManoObra = '"+mdo+"', Total = '"+total+"'";
+void Bdd::editarPresupuesto(String^ idCli, String^ valor, String^ mdo, String^ total, String^ idPres) {
+	String^ sql = "update presupuesto set IDCliente = '"+idCli+"', Valor = '"+valor+"', ManoObra = '"+mdo+"', Total = '"+total+"', "+idPres+"";
 	MySqlCommand^ cursor2 = gcnew MySqlCommand(sql, this->conn);
 	try {
 		using namespace System::Windows::Forms;
@@ -160,6 +179,23 @@ void Bdd::editarPresupuesto(String^ idCli, String^ valor, String^ mdo, String^ t
 	}
 }
 
+void Bdd::eliminarPresupuesto(String^ idCli, String^ valor, String^ mdo, String^ total, String^ idPres) {
+	String^ sql = "delete from presupuesto where id = " + idPres + "";
+	MySqlCommand^ cursor2 = gcnew MySqlCommand(sql, this->conn);
+	try {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show("Eliminado Correctamente");
+		cursor2->ExecuteNonQuery();
+	}
+	catch (Exception^ e) {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
+}
 											//datos conocimiento
 DataTable^ Bdd::getDataKnow() {
 	String^ sql = "select * from conocimiento";
@@ -184,14 +220,32 @@ void Bdd::insertarConocimiento(String^ link, String^ desc) {
 	}
 }
 
-void Bdd::editarConocimiento(String^ link, String^ desc) {
-	String^ sql = "update conocimiento set link = '" + link + "', descripcion = '" + desc + "'";
+void Bdd::editarConocimiento(String^ link, String^ desc, String^ idCon) {
+	String^ sql = "update conocimiento set ID = "+idCon+", link = '" + link + "', descripcion = '" + desc + "'";
 	MySqlCommand^ cursor3 = gcnew MySqlCommand(sql, this->conn);
 	try {
 		using namespace System::Windows::Forms;
 		using namespace System::Data;
 		using namespace System::Drawing;
 		MessageBox::Show("Modificado Correctamente");
+		cursor3->ExecuteNonQuery();
+	}
+	catch (Exception^ e) {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
+}
+
+void Bdd::eliminarConocimiento(String^ link, String^ desc, String^ idCon) {
+	String^ sql = "delete from conocimiento where ID = "+idCon+"";
+	MySqlCommand^ cursor3 = gcnew MySqlCommand(sql, this->conn);
+	try {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show("Eliminado Correctamente");
 		cursor3->ExecuteNonQuery();
 	}
 	catch (Exception^ e) {

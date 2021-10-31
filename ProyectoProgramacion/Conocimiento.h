@@ -1,8 +1,5 @@
 #pragma once
 #include "Bdd.h"
-#include "ConocimientoAlta.h"
-#include "ConocimientoEditar.h"
-#include "ConocimientoEliminar.h"
 
 namespace ProyectoProgramacion {
 
@@ -45,6 +42,12 @@ namespace ProyectoProgramacion {
 	private: System::Windows::Forms::Button^ btnDelKnow;
 	private: System::Windows::Forms::DataGridView^ dataGridKnow;
 	private: Bdd^ data3;
+	private: System::Windows::Forms::TextBox^ txtLinkKnow;
+	private: System::Windows::Forms::TextBox^ txtDescKnow;
+
+
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
 
 	protected:
 
@@ -66,6 +69,10 @@ namespace ProyectoProgramacion {
 			this->btnEditKnow = (gcnew System::Windows::Forms::Button());
 			this->btnDelKnow = (gcnew System::Windows::Forms::Button());
 			this->dataGridKnow = (gcnew System::Windows::Forms::DataGridView());
+			this->txtLinkKnow = (gcnew System::Windows::Forms::TextBox());
+			this->txtDescKnow = (gcnew System::Windows::Forms::TextBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridKnow))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -76,59 +83,102 @@ namespace ProyectoProgramacion {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(12, 9);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(242, 24);
+			this->label1->Size = System::Drawing::Size(157, 24);
 			this->label1->TabIndex = 1;
-			this->label1->Text = L"Base de conocimiento";
+			this->label1->Text = L"Conocimiento";
 			// 
 			// btnNewKnow
 			// 
+			this->btnNewKnow->BackColor = System::Drawing::Color::LimeGreen;
 			this->btnNewKnow->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnNewKnow->Location = System::Drawing::Point(16, 57);
+			this->btnNewKnow->Location = System::Drawing::Point(133, 34);
 			this->btnNewKnow->Name = L"btnNewKnow";
 			this->btnNewKnow->Size = System::Drawing::Size(129, 37);
 			this->btnNewKnow->TabIndex = 2;
 			this->btnNewKnow->Text = L"Nuevo";
-			this->btnNewKnow->UseVisualStyleBackColor = true;
+			this->btnNewKnow->UseVisualStyleBackColor = false;
 			this->btnNewKnow->Click += gcnew System::EventHandler(this, &Conocimiento::btnNewKnow_Click);
 			// 
 			// btnEditKnow
 			// 
+			this->btnEditKnow->BackColor = System::Drawing::Color::Gold;
 			this->btnEditKnow->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnEditKnow->Location = System::Drawing::Point(220, 57);
+			this->btnEditKnow->Location = System::Drawing::Point(268, 34);
 			this->btnEditKnow->Name = L"btnEditKnow";
 			this->btnEditKnow->Size = System::Drawing::Size(129, 37);
 			this->btnEditKnow->TabIndex = 3;
 			this->btnEditKnow->Text = L"Editar";
-			this->btnEditKnow->UseVisualStyleBackColor = true;
+			this->btnEditKnow->UseVisualStyleBackColor = false;
 			this->btnEditKnow->Click += gcnew System::EventHandler(this, &Conocimiento::btnEditKnow_Click);
 			// 
 			// btnDelKnow
 			// 
+			this->btnDelKnow->BackColor = System::Drawing::Color::Red;
 			this->btnDelKnow->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnDelKnow->Location = System::Drawing::Point(410, 57);
+			this->btnDelKnow->Location = System::Drawing::Point(403, 34);
 			this->btnDelKnow->Name = L"btnDelKnow";
 			this->btnDelKnow->Size = System::Drawing::Size(129, 37);
 			this->btnDelKnow->TabIndex = 4;
 			this->btnDelKnow->Text = L"Eliminar";
-			this->btnDelKnow->UseVisualStyleBackColor = true;
+			this->btnDelKnow->UseVisualStyleBackColor = false;
 			this->btnDelKnow->Click += gcnew System::EventHandler(this, &Conocimiento::btnDelKnow_Click);
 			// 
 			// dataGridKnow
 			// 
 			this->dataGridKnow->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridKnow->Location = System::Drawing::Point(16, 133);
+			this->dataGridKnow->Location = System::Drawing::Point(16, 240);
 			this->dataGridKnow->Name = L"dataGridKnow";
-			this->dataGridKnow->Size = System::Drawing::Size(523, 216);
+			this->dataGridKnow->Size = System::Drawing::Size(526, 122);
 			this->dataGridKnow->TabIndex = 5;
+			// 
+			// txtLinkKnow
+			// 
+			this->txtLinkKnow->Location = System::Drawing::Point(176, 124);
+			this->txtLinkKnow->Name = L"txtLinkKnow";
+			this->txtLinkKnow->Size = System::Drawing::Size(363, 20);
+			this->txtLinkKnow->TabIndex = 6;
+			// 
+			// txtDescKnow
+			// 
+			this->txtDescKnow->Location = System::Drawing::Point(176, 180);
+			this->txtDescKnow->Name = L"txtDescKnow";
+			this->txtDescKnow->Size = System::Drawing::Size(363, 20);
+			this->txtDescKnow->TabIndex = 7;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(68, 124);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(38, 21);
+			this->label2->TabIndex = 8;
+			this->label2->Text = L"Link";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(68, 177);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(100, 21);
+			this->label3->TabIndex = 9;
+			this->label3->Text = L"Descripcion";
 			// 
 			// Conocimiento
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(563, 423);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->txtDescKnow);
+			this->Controls->Add(this->txtLinkKnow);
 			this->Controls->Add(this->dataGridKnow);
 			this->Controls->Add(this->btnDelKnow);
 			this->Controls->Add(this->btnEditKnow);
@@ -145,18 +195,19 @@ namespace ProyectoProgramacion {
 		}
 #pragma endregion
 	private: System::Void btnNewKnow_Click(System::Object^ sender, System::EventArgs^ e) {
-		ProyectoProgramacion::ConocimientoAlta^ conocimientoAlta = gcnew ProyectoProgramacion::ConocimientoAlta();
-		conocimientoAlta->Show();
+		this->data3->abrirConexion();
+		this->data3->insertarConocimiento(this->txtLinkKnow->Text, this->txtDescKnow->Text);
+		this->data3->cerrarConexion();
+
+		this->Consulta3();
 	}
 
 	private: System::Void btnEditKnow_Click(System::Object^ sender, System::EventArgs^ e) {
-		ProyectoProgramacion::ConocimientoEditar^ conocimientoEditar = gcnew ProyectoProgramacion::ConocimientoEditar();
-		conocimientoEditar->Show();
+		
 	}
 
 	private: System::Void btnDelKnow_Click(System::Object^ sender, System::EventArgs^ e) {
-		ProyectoProgramacion::ConocimientoEliminar^ conocimientoEliminar = gcnew ProyectoProgramacion::ConocimientoEliminar();
-		conocimientoEliminar->Show();
+		
 	}
 	private: System::Void Conocimiento_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->Consulta3();
@@ -166,5 +217,6 @@ namespace ProyectoProgramacion {
 		this->dataGridKnow->DataSource = this->data3->getDataKnow();
 		this->data3->cerrarConexion();
 	}
+
 };
 }

@@ -1,4 +1,5 @@
 #include "Bdd.h"
+using namespace std;
 
 Bdd::Bdd() {
 
@@ -13,7 +14,7 @@ void Bdd::abrirConexion() {
 void Bdd::cerrarConexion() {
 	this->conn->Close();
 }
-//datos cliente
+										//datos cliente
 DataTable^ Bdd::getData() {
 	String^ sql = "select * from cliente";
 	MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
@@ -23,7 +24,57 @@ DataTable^ Bdd::getData() {
 	return tabla;
 }
 
-//datos repuesto
+void Bdd::insertarCliente(String^ nom, String^ ap, String^ mail, String^ dni, String^ dir, String^ tel) {
+	String^ sql = "insert into cliente(Nombre, Apellido, Mail, DNI, Direccion, Telefono) values ('"+nom+"', '"+ap+"', '"+mail+"', '"+dni+"', '"+dir+"', '"+tel+"' )";
+	MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
+	try{
+		cursor->ExecuteNonQuery();
+	}
+	catch (Exception^ e){
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
+}
+
+void Bdd::editarCliente(String^ nom, String^ ap, String^ mail, String^ dni, String^ dir, String^ tel) {
+	String^ sql = "update cliente set Nombre = '" + nom + "', Apellido = '" + ap + "', Mail = '" + mail + "', DNI = '" + dni + "', Direccion = '" + dir + "', Telefono = '" + tel + "'";
+	MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
+	try{
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show("Modificado Correctamente");
+		cursor->ExecuteNonQuery();
+	}
+	catch (Exception^ e){
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
+}
+
+void Bdd::eliminarCliente(String^ nom, String^ ap, String^ mail, String^ dni, String^ dir, String^ tel) {
+	String^ sql = "delete from cliente where IDCliente = ";
+	MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
+	try {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show("Eliminado Correctamente");
+		cursor->ExecuteNonQuery();
+	}
+	catch (Exception^ e) {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
+
+}
+											//datos repuesto
 DataTable^ Bdd::getDataRep() {
 	String^ sql = "select * from repuesto";
 	MySqlCommand^ cursor1 = gcnew MySqlCommand(sql, this->conn);
@@ -33,9 +84,40 @@ DataTable^ Bdd::getDataRep() {
 	return tabla1;
 }
 
+void Bdd::insertarRepuesto(String^ marca, String^ tipo, String^ valor){
+	String^ sql = "insert into repuesto(Marca, Tipo, Valor) values ('"+marca+"', '"+tipo+"', "+valor+")";
+	MySqlCommand^ cursor1 = gcnew MySqlCommand(sql, this->conn);
+	try{
+		cursor1->ExecuteNonQuery();
+	}
+	catch (Exception^ e){
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
+}
+
+void Bdd::editarRepuesto(String^ marca, String^ tipo, String^ valor) {
+	String^ sql = "update repuesto set Marca = '" + marca + "', Tipo = '" + tipo + "', Valor = " + valor + "";
+	MySqlCommand^ cursor1 = gcnew MySqlCommand(sql, this->conn);
+	try {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show("Modificado Correctamente");
+		cursor1->ExecuteNonQuery();
+	}
+	catch (Exception^ e) {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
+}
 
 
-//datos presupuesto
+											//datos presupuesto
 DataTable^ Bdd::getDataPres() {
 	String^ sql = "select * from presupuesto";
 	MySqlCommand^ cursor2 = gcnew MySqlCommand(sql, this->conn);
@@ -46,8 +128,39 @@ DataTable^ Bdd::getDataPres() {
 }
 
 
+void Bdd::insertarPresupuesto(String^ idCli, String^ valor, String^ mdo, String^ total) {
+	String^ sql = "insert into presupuesto(IDCliente, Valor, ManoObra, Total) values ("+idCli+", "+valor+", "+mdo+", "+total+")";
+	MySqlCommand^ cursor2 = gcnew MySqlCommand(sql, this->conn);
+	try{
+		cursor2->ExecuteNonQuery();
+	}
+	catch (Exception^ e){
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
+}
 
-//datos conocimiento
+void Bdd::editarPresupuesto(String^ idCli, String^ valor, String^ mdo, String^ total) {
+	String^ sql = "update presupuesto set IDCliente = '"+idCli+"', Valor = '"+valor+"', ManoObra = '"+mdo+"', Total = '"+total+"'";
+	MySqlCommand^ cursor2 = gcnew MySqlCommand(sql, this->conn);
+	try {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show("Modificado Correctamente");
+		cursor2->ExecuteNonQuery();
+	}
+	catch (Exception^ e) {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
+}
+
+											//datos conocimiento
 DataTable^ Bdd::getDataKnow() {
 	String^ sql = "select * from conocimiento";
 	MySqlCommand^ cursor3 = gcnew MySqlCommand(sql, this->conn);
@@ -55,4 +168,36 @@ DataTable^ Bdd::getDataKnow() {
 	DataTable^ tabla3 = gcnew DataTable();
 	data3->Fill(tabla3);
 	return tabla3;
+}
+
+void Bdd::insertarConocimiento(String^ link, String^ desc) {
+	String^ sql = "insert into conocimiento(link, descripcion) values ('"+link+"', '"+desc+"')";
+	MySqlCommand^ cursor3 = gcnew MySqlCommand(sql, this->conn);
+	try{
+		cursor3->ExecuteNonQuery();
+	}
+	catch (Exception^ e){
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
+}
+
+void Bdd::editarConocimiento(String^ link, String^ desc) {
+	String^ sql = "update conocimiento set link = '" + link + "', descripcion = '" + desc + "'";
+	MySqlCommand^ cursor3 = gcnew MySqlCommand(sql, this->conn);
+	try {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show("Modificado Correctamente");
+		cursor3->ExecuteNonQuery();
+	}
+	catch (Exception^ e) {
+		using namespace System::Windows::Forms;
+		using namespace System::Data;
+		using namespace System::Drawing;
+		MessageBox::Show(e->Message);
+	}
 }

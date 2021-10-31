@@ -129,48 +129,18 @@
   <ItemGroup>
     <ClCompile Include="Bdd.cpp" />
     <ClCompile Include="Cliente.cpp" />
-    <ClCompile Include="ClienteAlta.cpp" />
-    <ClCompile Include="ClienteEditar.cpp" />
-    <ClCompile Include="ClienteEliminar.cpp" />
     <ClCompile Include="Conocimiento.cpp" />
-    <ClCompile Include="ConocimientoAlta.cpp" />
-    <ClCompile Include="ConocimientoEditar.cpp" />
-    <ClCompile Include="ConocimientoEliminar.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="Presupuesto.cpp" />
-    <ClCompile Include="PresupuestoAlta.cpp" />
-    <ClCompile Include="PresupuestoEditar.cpp" />
-    <ClCompile Include="PresupuestoEliminar.cpp" />
     <ClCompile Include="Repuesto.cpp" />
-    <ClCompile Include="RepuestoAlta.cpp" />
-    <ClCompile Include="RepuestoEditar.cpp" />
-    <ClCompile Include="RepuestoEliminar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bdd.h" />
     <ClInclude Include="Cliente.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="ClienteAlta.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="ClienteEditar.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="ClienteEliminar.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="Conocimiento.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="ConocimientoAlta.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="ConocimientoEditar.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="ConocimientoEliminar.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MyForm.h">
@@ -182,25 +152,7 @@
     <ClInclude Include="Presupuesto.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="PresupuestoAlta.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="PresupuestoEditar.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="PresupuestoEliminar.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="Repuesto.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="RepuestoAlta.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="RepuestoEditar.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="RepuestoEliminar.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -208,26 +160,8 @@
     <EmbeddedResource Include="Cliente.resx">
       <DependentUpon>Cliente.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClienteAlta.resx">
-      <DependentUpon>ClienteAlta.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ClienteEditar.resx">
-      <DependentUpon>ClienteEditar.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ClienteEliminar.resx">
-      <DependentUpon>ClienteEliminar.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Conocimiento.resx">
       <DependentUpon>Conocimiento.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConocimientoAlta.resx">
-      <DependentUpon>ConocimientoAlta.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConocimientoEditar.resx">
-      <DependentUpon>ConocimientoEditar.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConocimientoEliminar.resx">
-      <DependentUpon>ConocimientoEliminar.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.h</DependentUpon>
@@ -238,26 +172,8 @@
     <EmbeddedResource Include="Presupuesto.resx">
       <DependentUpon>Presupuesto.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PresupuestoAlta.resx">
-      <DependentUpon>PresupuestoAlta.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PresupuestoEditar.resx">
-      <DependentUpon>PresupuestoEditar.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PresupuestoEliminar.resx">
-      <DependentUpon>PresupuestoEliminar.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Repuesto.resx">
       <DependentUpon>Repuesto.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RepuestoAlta.resx">
-      <DependentUpon>RepuestoAlta.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RepuestoEditar.resx">
-      <DependentUpon>RepuestoEditar.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RepuestoEliminar.resx">
-      <DependentUpon>RepuestoEliminar.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,4 +1,5 @@
 #pragma once
+#include "Bdd.h"
 
 namespace ProyectoProgramacion {
 
@@ -21,6 +22,7 @@ namespace ProyectoProgramacion {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			this->data3 = gcnew Bdd();
 		}
 
 	protected:
@@ -36,12 +38,15 @@ namespace ProyectoProgramacion {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ btnNewKnowCancel;
-
 	private: System::Windows::Forms::Button^ btnNewKnowSave;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::TextBox^ txtLinkNewKnow;
+	private: System::Windows::Forms::TextBox^ txtNewDescKnow;
+
+
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
+
+	private: Bdd^ data3;
 
 	protected:
 
@@ -61,8 +66,8 @@ namespace ProyectoProgramacion {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->btnNewKnowCancel = (gcnew System::Windows::Forms::Button());
 			this->btnNewKnowSave = (gcnew System::Windows::Forms::Button());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->txtLinkNewKnow = (gcnew System::Windows::Forms::TextBox());
+			this->txtNewDescKnow = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
@@ -100,20 +105,21 @@ namespace ProyectoProgramacion {
 			this->btnNewKnowSave->TabIndex = 11;
 			this->btnNewKnowSave->Text = L"Guardar";
 			this->btnNewKnowSave->UseVisualStyleBackColor = true;
+			this->btnNewKnowSave->Click += gcnew System::EventHandler(this, &ConocimientoAlta::btnNewKnowSave_Click);
 			// 
-			// textBox1
+			// txtLinkNewKnow
 			// 
-			this->textBox1->Location = System::Drawing::Point(16, 146);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(481, 20);
-			this->textBox1->TabIndex = 13;
+			this->txtLinkNewKnow->Location = System::Drawing::Point(16, 146);
+			this->txtLinkNewKnow->Name = L"txtLinkNewKnow";
+			this->txtLinkNewKnow->Size = System::Drawing::Size(481, 20);
+			this->txtLinkNewKnow->TabIndex = 13;
 			// 
-			// textBox2
+			// txtNewDescKnow
 			// 
-			this->textBox2->Location = System::Drawing::Point(16, 235);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(481, 20);
-			this->textBox2->TabIndex = 14;
+			this->txtNewDescKnow->Location = System::Drawing::Point(16, 235);
+			this->txtNewDescKnow->Name = L"txtNewDescKnow";
+			this->txtNewDescKnow->Size = System::Drawing::Size(481, 20);
+			this->txtNewDescKnow->TabIndex = 14;
 			// 
 			// label2
 			// 
@@ -140,8 +146,8 @@ namespace ProyectoProgramacion {
 			this->ClientSize = System::Drawing::Size(563, 423);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->txtNewDescKnow);
+			this->Controls->Add(this->txtLinkNewKnow);
 			this->Controls->Add(this->btnNewKnowCancel);
 			this->Controls->Add(this->btnNewKnowSave);
 			this->Controls->Add(this->label1);
@@ -154,6 +160,13 @@ namespace ProyectoProgramacion {
 		}
 #pragma endregion
 	private: System::Void btnNewKnowCancel_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Visible = false;
+	}
+	private: System::Void btnNewKnowSave_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->data3->abrirConexion();
+		this->data3->insertarConocimiento(this->txtLinkNewKnow->Text, this->txtNewDescKnow->Text);
+		this->data3->cerrarConexion();
+
 		this->Visible = false;
 	}
 };

@@ -1,21 +1,9 @@
   ProyectoProgramacion.Cliente.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.ClienteAlta.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.ClienteEditar.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.ClienteEliminar.resources - Embedded, ContainedInManifestFile, 
   ProyectoProgramacion.Conocimiento.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.ConocimientoAlta.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.ConocimientoEditar.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.ConocimientoEliminar.resources - Embedded, ContainedInManifestFile, 
   ProyectoProgramacion.Inicio.resources - Embedded, ContainedInManifestFile, 
   ProyectoProgramacion.MyForm.resources - Embedded, ContainedInManifestFile, 
   ProyectoProgramacion.Presupuesto.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.PresupuestoAlta.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.PresupuestoEditar.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.PresupuestoEliminar.resources - Embedded, ContainedInManifestFile, 
   ProyectoProgramacion.Repuesto.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.RepuestoAlta.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.RepuestoEditar.resources - Embedded, ContainedInManifestFile, 
-  ProyectoProgramacion.RepuestoEliminar.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly ProyectoProgramacion, Version=0.0.*, Culture=Todos los idiomas (todos los países): 
 	hash=SHA1, flags=PublicKey
@@ -241,29 +229,11 @@ Assembly System.Xml.XPath, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f
 	hash=None, flags=None
 Assembly System.Xml.XPath.XDocument, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
 	hash=None, flags=None
-Class ProyectoProgramacion.ClienteAlta: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class ProyectoProgramacion.ClienteEditar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class ProyectoProgramacion.ClienteEliminar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class ProyectoProgramacion.Cliente: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     Consulta(): PrivateScope, Public, HideBySig
-Class ProyectoProgramacion.ConocimientoAlta: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class ProyectoProgramacion.ConocimientoEditar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class ProyectoProgramacion.ConocimientoEliminar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class ProyectoProgramacion.Conocimiento: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -272,29 +242,11 @@ Class ProyectoProgramacion.Conocimiento: AutoLayout, AnsiClass, Class, Public, B
 Class ProyectoProgramacion.MyForm1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class ProyectoProgramacion.PresupuestoAlta: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class ProyectoProgramacion.PresupuestoEditar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class ProyectoProgramacion.PresupuestoEliminar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class ProyectoProgramacion.Presupuesto: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     Consulta(): PrivateScope, Public, HideBySig
-Class ProyectoProgramacion.RepuestoAlta: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class ProyectoProgramacion.RepuestoEditar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class ProyectoProgramacion.RepuestoEliminar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class ProyectoProgramacion.Repuesto: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

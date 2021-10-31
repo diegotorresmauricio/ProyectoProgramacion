@@ -39,7 +39,7 @@ void Bdd::insertarCliente(String^ nom, String^ ap, String^ mail, String^ dni, St
 }
 
 void Bdd::editarCliente(String^ nom, String^ ap, String^ mail, String^ dni, String^ dir, String^ tel, String^ id) {
-	String^ sql = "update cliente set Nombre = '" + nom + "', Apellido = '" + ap + "', Mail = '" + mail + "', DNI = '" + dni + "', Direccion = '" + dir + "', Telefono = '" + tel + "'";
+	String^ sql = "update cliente set Nombre = '" + nom + "', Apellido = '" + ap + "', Mail = '" + mail + "', DNI = '" + dni + "', Direccion = '" + dir + "', Telefono = '" + tel + "' WHERE IDCliente = "+id+"";
 	MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
 	try{
 		using namespace System::Windows::Forms;
@@ -99,7 +99,7 @@ void Bdd::insertarRepuesto(String^ marca, String^ tipo, String^ valor){
 }
 
 void Bdd::editarRepuesto(String^ marca, String^ tipo, String^ valor, String^ idRep) {
-	String^ sql = "update repuesto set IDRepuesto = "+idRep+", Marca = '" + marca + "', Tipo = '" + tipo + "', Valor = " + valor + "";
+	String^ sql = "update repuesto set Marca = '" + marca + "', Tipo = '" + tipo + "', Valor = " + valor + " where IDRepuesto = "+idRep+"";
 	MySqlCommand^ cursor1 = gcnew MySqlCommand(sql, this->conn);
 	try {
 		using namespace System::Windows::Forms;
@@ -162,7 +162,7 @@ void Bdd::insertarPresupuesto(String^ idCli, String^ valor, String^ mdo, String^
 }
 
 void Bdd::editarPresupuesto(String^ idCli, String^ valor, String^ mdo, String^ total, String^ idPres) {
-	String^ sql = "update presupuesto set IDCliente = '"+idCli+"', Valor = '"+valor+"', ManoObra = '"+mdo+"', Total = '"+total+"', "+idPres+"";
+	String^ sql = "update presupuesto set IDCliente = '"+idCli+"', Valor = '"+valor+"', ManoObra = '"+mdo+"', Total = '"+total+"' where IDPresupuesto = "+idPres+"";
 	MySqlCommand^ cursor2 = gcnew MySqlCommand(sql, this->conn);
 	try {
 		using namespace System::Windows::Forms;
@@ -221,7 +221,7 @@ void Bdd::insertarConocimiento(String^ link, String^ desc) {
 }
 
 void Bdd::editarConocimiento(String^ link, String^ desc, String^ idCon) {
-	String^ sql = "update conocimiento set ID = "+idCon+", link = '" + link + "', descripcion = '" + desc + "'";
+	String^ sql = "update conocimiento set link = '" + link + "', descripcion = '" + desc + "' where ID = " + idCon + "";
 	MySqlCommand^ cursor3 = gcnew MySqlCommand(sql, this->conn);
 	try {
 		using namespace System::Windows::Forms;
